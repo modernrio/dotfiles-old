@@ -11,6 +11,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'chriskempson/base16-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
@@ -71,10 +72,14 @@ set number
 " Autoindent on
 set autoindent
 
+
+" Access colors present in 256 colorspace
+let base16colorspace=256
+
 " Colorscheme
 syntax on
-"set background=dark
-"colorscheme solarized
+" set background=dark
+colorscheme base16-chalk
 
 " Tab regulations
 set tabstop=4
@@ -130,18 +135,17 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0 " for now
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_vhdl_ghdl_args = '--workdir=work'
+let g:syntastic_python_checkers = ['pylint']
 
 " Ignore files for ControlP-Plugin
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|vdb)$',
-  \ 'link': 'some_bad_symbolic_links',
   \ }
 
 " Remap default controls for following tags

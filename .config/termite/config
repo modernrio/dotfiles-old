@@ -33,7 +33,7 @@ filter_unmatched_urls = true
 foreground      = #d0d0d0
 foreground_bold = #d0d0d0
 cursor          = #d0d0d0
-background      = #202020
+background      = #151515
 
 # 16 color space
 color0  = #151515
