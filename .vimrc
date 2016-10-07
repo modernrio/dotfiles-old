@@ -142,11 +142,13 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_python_checkers = ['pylint']
 
-" Ignore files for ControlP-Plugin
+" ControlP
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|vdb)$',
   \ }
+
+let g:ctrlp_show_hidden = 1
 
 " Remap default controls for following tags
 nnoremap t <C-]>
