@@ -45,6 +45,12 @@ if has('gui_running')
 	set guifont=Inconsolata Regular:h13
 endif
 
+" Powerline
+let $PYTHONPATH='/usr/lib/python3.5/site-packages/'
+set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
+set laststatus=2
+set t_Co=256
+
 " Folding options
 set foldmethod=indent
 set nofoldenable
@@ -100,12 +106,6 @@ let g:vimwiki_list = [
 	\  'path_html': '~/vimwiki_html/',
 	\  'ext': '.md'
 	\ },
-	\ {
-	\  'path' : '~/Projects/EPU/doc/notes/',
-	\  'path_html' : '~/Projects/EPU/notes/html/',
-	\  'syntax' : 'markdown',
-	\  'ext' : '.md'
-	\ }
 	\ ]
 
 let g:tagbar_type_vimwiki = {
