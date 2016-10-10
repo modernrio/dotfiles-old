@@ -78,7 +78,6 @@ set number
 " Autoindent on
 set autoindent
 
-
 " Access colors present in 256 colorspace
 let base16colorspace=256
 
@@ -91,6 +90,9 @@ colorscheme base16-chalk
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
+" Limit text width to 72 characters when writing mail
+au BufRead /tmp/mutt-* set tw=72
 
 " Extend runtimepath for ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
