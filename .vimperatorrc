@@ -1,0 +1,6 @@
+" Only use characters that don't suck to press.
+set hintchars="qwertasdfguophjkl"
+
+"Make j and k scroll faster
+nnoremap j 10j
+nnoremap k 10k
