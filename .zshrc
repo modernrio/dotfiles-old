@@ -103,3 +103,12 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+# Source Xilinx ISE
+export PATH=/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64:$PATH
+
+# Add ruby binaries to PATH
+export PATH=~/.gem/ruby/2.3.0/bin:$PATH
+
+# Set console to vi mode
+set -o vi

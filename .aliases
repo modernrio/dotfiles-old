@@ -17,6 +17,12 @@ alias py='python'
 alias py2='python2'
 alias py3='python3'
 
+## FPGA
+alias fpga-loader='sudo ~/Projects/epu/saturn-loader/saturn-loader'
+
+## Tmuxinator
+alias epu='tmuxinator start epu'
+
 ## Fun
 alias aquarium='asciiquarium'
 alias starwars='telnet towel.blinkenlights.nl'
@@ -33,8 +39,10 @@ alias cD='cd ~/Downloads'
 alias cd3='cd ~/.config/i3/'
 alias cdC='cd ~/.config'
 alias cdD='cd ~/dotfiles'
+alias cdE='cd ~/Projects/epu'
 alias cdM='cd ~/Music/'
 alias cdP='cd ~/Projects/'
+alias cdS='cd ~/Scripts'
 alias cdT='cd ~/.config/termite/'
 alias cdV='cd ~/.vim'
 #
@@ -46,8 +54,10 @@ alias rZ='source ~/.zshrc'
 ## Editing shortcuts
 alias e='$EDITOR'
 alias e3='$EDITOR ~/.config/i3/config'
+alias e3b='$EDITOR ~/.config/i3/i3blocks.conf'
 alias eA='$EDITOR ~/.aliases'
 alias eB='$EDITOR ~/.bashrc && rB'
+alias eE='tmuxinator open epu'
 alias eV='$EDITOR ~/.vimrc'
 alias eF='sudo $EDITOR /root/activate-firewall.sh && sudo bash /root/activate-firewall.sh'
 alias eX='$EDITOR ~/.Xresources && rX'
