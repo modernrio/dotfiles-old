@@ -1,17 +1,3 @@
-## Export variables
-export EDITOR="vim"
-export PAGER="less"
-export BROWSER="firefox"
-export MAIL="mutt"
-export MOVPLAY="mpv"
-export PICVIEW="feh"
-export SNDPLAY="mpv"
-export DOCVIEWER="zathura"
-export TERMINAL="termite"
-export PULSE_LATENCY_MSEC=60
-export TERM="xterm-256color"
-export ETH_IF="eno1"
-
 ## Python
 alias py='python'
 alias py2='python2'

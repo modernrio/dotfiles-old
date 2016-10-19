@@ -1,21 +1,14 @@
-# Source aliases
-source $HOME/.aliases
-
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 ZSH_CUSTOM=~/.config/zsh/themes/
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Set name of the theme to load
 ZSH_THEME="powerlevel9k"
 
 # Customize powerlevel9k
 POWERLEVEL9k_MODE='awesome-patched'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode time)
-
-
 POWERLEVEL9K_VCS_GIT_ICON=''
 POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
 POWERLEVEL9K_VCS_UNTRACKED_ICON=''
@@ -23,43 +16,11 @@ POWERLEVEL9K_VCS_UNSTAGED_ICON=''
 POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
 POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
+# Disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# Change the command execution time stamp shown in the history command output.
+HIST_STAMPS="dd.mm.yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -67,41 +28,30 @@ DISABLE_AUTO_UPDATE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+# Set your language environment
+export LANG=en_US.UTF-8
 
-# User configuration
+# Set x11 keyboard map
+setxkbmap de,de
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# Set zsh cache directory
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
+# Autocompletion
+autoload -Uz compinit
+compinit
+
+#------------------------------------------------------------------------------#
+#                                External files                                #
+#------------------------------------------------------------------------------#
+
+# Source aliases
+source $HOME/.aliases
+
+# Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Source Xilinx ISE
@@ -110,5 +60,45 @@ export PATH=/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64:$PATH
 # Add ruby binaries to PATH
 export PATH=~/.gem/ruby/2.3.0/bin:$PATH
 
+#------------------------------------------------------------------------------#
+#                              Default Variables                               #
+#------------------------------------------------------------------------------#
+
+export EDITOR="vim"
+export PAGER="less"
+export BROWSER="firefox"
+export MAIL="mutt"
+export MOVPLAY="mpv"
+export PICVIEW="feh"
+export SNDPLAY="mpv"
+export DOCVIEWER="zathura"
+export TERMINAL="uxterm"
+export PULSE_LATENCY_MSEC=60
+export TERM="xterm-256color"
+export ETH_IF="eno1"
+
+#------------------------------------------------------------------------------#
+#                                   Options                                    #
+#------------------------------------------------------------------------------#
+
 # Set console to vi mode
 set -o vi
+
+# Suppress python byte code
+export PYTHONDONTWRITEBYTECODE="true"
+
+# Why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
+
+# 10 second wait if you do something that will delete everything.
+setopt RM_STAR_WAIT
+
+# Beeps are annoying
+setopt NO_BEEP
+
+# If a line starts with a space, don't save it.
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+
+# Save the time and how long a command ran
+setopt EXTENDED_HISTORY
