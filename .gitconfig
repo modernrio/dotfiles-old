@@ -12,7 +12,6 @@
 	ui = true
 [diff]
 	tool = vimdiff
-	external = git_diff_wrapper
 [merge]
 	tool = vimdiff
 [difftool]
