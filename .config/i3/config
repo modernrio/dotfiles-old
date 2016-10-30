@@ -28,8 +28,7 @@ font pango:Inconsolata-Regular 9
 exec_always feh --bg-scale /home/whoami/Pictures/wallpaper.jpg
 exec_always setres --port HDMI-1 1920 1080
 exec_always setres --port DVI-I-1 1280 1024
-# exec_always xrandr --output DP-1 --off --output DVI-I-1 --mode 1280x1024_60.00 --pos 0x0 --rotate normal --output DVI-D-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 1280x0 --rotate normal
-exec_always xrandr --output TV-1 --off --output DVI-I-1 --mode 1280x1024_60.00 --pos 0x0 --rotate normal --output DVI-I-2 --primary --mode 1920x1080 --pos 1280x0 --rotate normal
+exec_always bash ~/.screenlayout/screen.sh
 exec_always setxkbmap de,de
 
 # Use Mouse+$mod to drag floating windows to their wanted position
