@@ -1,3 +1,19 @@
+#------------------------------------------------------------------------------#
+#                              Default Variables                               #
+#------------------------------------------------------------------------------#
+export EDITOR="vim"
+export PAGER="less"
+export BROWSER="firefox"
+export MAIL="mutt"
+export MOVPLAY="mpv"
+export PICVIEW="feh"
+export SNDPLAY="mpv"
+export DOCVIEWER="zathura"
+export TERMINAL="uxterm"
+export PULSE_LATENCY_MSEC=60
+export TERM="xterm-256color"
+export ETH_IF="eno1"
+
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 ZSH_CUSTOM=~/.config/zsh/themes/
@@ -59,23 +75,6 @@ export PATH=/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64:$PATH
 
 # Add ruby binaries to PATH
 export PATH=~/.gem/ruby/2.3.0/bin:$PATH
-
-#------------------------------------------------------------------------------#
-#                              Default Variables                               #
-#------------------------------------------------------------------------------#
-
-export EDITOR="vim"
-export PAGER="less"
-export BROWSER="firefox"
-export MAIL="mutt"
-export MOVPLAY="mpv"
-export PICVIEW="feh"
-export SNDPLAY="mpv"
-export DOCVIEWER="zathura"
-export TERMINAL="uxterm"
-export PULSE_LATENCY_MSEC=60
-export TERM="xterm-256color"
-export ETH_IF="eno1"
 
 #------------------------------------------------------------------------------#
 #                                   Options                                    #
