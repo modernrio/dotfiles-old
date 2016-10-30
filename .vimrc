@@ -158,6 +158,11 @@ nnoremap t <C-]>
 " <Ctrl-l> redraws the screen and removes any search highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" <Ctrl-s> saves the file
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+
 " Remap arrow keys to do nothing
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>

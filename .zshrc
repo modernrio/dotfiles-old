@@ -102,3 +102,6 @@ setopt HIST_NO_STORE
 
 # Save the time and how long a command ran
 setopt EXTENDED_HISTORY
+
+# Stop <Ctrl-s> to suspend the tty
+stty -ixon
