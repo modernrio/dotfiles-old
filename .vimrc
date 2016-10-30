@@ -94,6 +94,9 @@ set softtabstop=4
 " Limit text width to 72 characters when writing mail
 au BufRead /tmp/mutt-* set tw=72
 
+" Limit text width to 80 characters when editing LaTeX
+au BufRead *.tex set tw=80
+
 " Extend runtimepath for ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
