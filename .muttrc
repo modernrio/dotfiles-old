@@ -174,17 +174,17 @@ set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
 
 ## Source accounts
 #mailboxes "Hotmail"
-# source "~/.mutt/account.de.hotmail.markus.lg"
-# folder-hook 'de.hotmail.markus.lg' "source ~/.mutt/account.de.hotmail.markus.lg"
+source "~/.mutt/account.de.hotmail.markus.lg"
+folder-hook 'de.hotmail.markus.lg' "source ~/.mutt/account.de.hotmail.markus.lg"
 
 #mailboxes "IceT"
-source "~/.mutt/account.de.icet-clan.markus"
-folder-hook 'de.icet-clan.markus' "source ~/.mutt/account.de.icet-clan.markus"
+# source "~/.mutt/account.de.icet-clan.markus"
+# folder-hook 'de.icet-clan.markus' "source ~/.mutt/account.de.icet-clan.markus"
 
 ## Macros for switching accounts
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
-macro index I '<enter-command>source ~/.mutt/account.de.icet-clan.markus<enter><change-folder>!<enter>'
-macro index H '<sync-mailbox><enter-command>source ~/.mutt/account.de.hotmail.markus.lg<enter><change-folder>!<enter>'
+# macro index I '<enter-command>source ~/.mutt/account.de.icet-clan.markus<enter><change-folder>!<enter>'
+# macro index H '<sync-mailbox><enter-command>source ~/.mutt/account.de.hotmail.markus.lg<enter><change-folder>!<enter>'
 
 ## Color theme
 color hdrdefault default default
