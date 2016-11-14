@@ -60,6 +60,7 @@ alias eS='$EDITOR ~/.sshrc'
 alias eZ='$EDITOR ~/.zshrc'
 
 ## Program shortcuts
+alias t='task'
 alias g='git'
 alias vi='vim'
 
