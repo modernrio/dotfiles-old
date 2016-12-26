@@ -47,6 +47,10 @@ bind attach,index G last-entry
 # Request IMAP mail retrieval manully with a keybinding
 bind index G imap-fetch-mail
 
+# Forward messages with attachments
+set mime_forward=yes
+set mime_forward_rest=yes 
+
 # Better printing quality. (Requires muttprint package)
 # Not in use because no printer is available
 #set print_command="/usr/bin/muttprint %s -p {PrinterName}" 
@@ -174,12 +178,12 @@ set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
 
 ## Source accounts
 #mailboxes "Hotmail"
-source "~/.mutt/account.de.hotmail.markus.lg"
-folder-hook 'de.hotmail.markus.lg' "source ~/.mutt/account.de.hotmail.markus.lg"
+# source "~/.mutt/account.de.hotmail.markus.lg"
+# folder-hook 'de.hotmail.markus.lg' "source ~/.mutt/account.de.hotmail.markus.lg"
 
 #mailboxes "IceT"
-# source "~/.mutt/account.de.icet-clan.markus"
-# folder-hook 'de.icet-clan.markus' "source ~/.mutt/account.de.icet-clan.markus"
+source "~/.mutt/account.de.icet-clan.markus"
+folder-hook 'de.icet-clan.markus' "source ~/.mutt/account.de.icet-clan.markus"
 
 ## Macros for switching accounts
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'

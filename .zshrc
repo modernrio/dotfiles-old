@@ -9,7 +9,7 @@ export MOVPLAY="mpv"
 export PICVIEW="feh"
 export SNDPLAY="mpv"
 export DOCVIEWER="zathura"
-export TERMINAL="uxterm"
+export TERMINAL="termite"
 export PULSE_LATENCY_MSEC=60
 export TERM="xterm-256color"
 export ETH_IF="eno1"
@@ -101,6 +101,9 @@ setopt HIST_NO_STORE
 
 # Save the time and how long a command ran
 setopt EXTENDED_HISTORY
+
+# Extended globbing and expansion
+setopt extendedglob
 
 # Stop <Ctrl-s> to suspend the tty
 stty -ixon

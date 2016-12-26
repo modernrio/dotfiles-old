@@ -55,6 +55,9 @@ set t_Co=256
 set foldmethod=indent
 set nofoldenable
 
+" Automatically read changed files again
+set autoread
+
 " Remove delay after pressing <Esc> in insert mode
 set noesckeys
 
@@ -97,10 +100,17 @@ au BufRead /tmp/mutt-* set tw=72
 " Limit text width to 80 characters when editing LaTeX
 au BufRead *.tex set tw=80
 
+" Limit text width to 100 characters when editing C++ files
+au BufRead *.cpp set tw=100
+au BufRead *.h set tw=100
+
 " Extend runtimepath for ctrlp plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " YCM settings
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_show_diagnostics_ui = 0
+
 let g:ycm_python_binary_path='python3'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
@@ -109,7 +119,6 @@ let g:vimwiki_list = [
 	\ {
 	\  'path': '~/vimwiki/',
 	\  'path_html': '~/vimwiki_html/',
-	\  'ext': '.md'
 	\ },
 	\ ]
 
@@ -145,12 +154,20 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" [Syntastic] Python checker options
 let g:syntastic_python_checkers = ['pylint']
+
+" [Syntastic] C++ checker options
+let g:syntastic_cpp_compiler = "g++"
+let g:syntastic_cpp_check_header = 1
+
+" [Syntastic] VHDL checker options
+let g:syntastic_vhdl_ghdl_args = "--workdir=work"
 
 " ControlP
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|o|vdb)$',
+  \ 'file': '\v\.(exe|so|dll|o|vdb|aux)$',
   \ }
 
 let g:ctrlp_show_hidden = 1
