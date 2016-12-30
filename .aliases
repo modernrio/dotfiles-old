@@ -69,6 +69,3 @@ alias vi='vim'
 ## Shell shortcuts
 alias k='exit'
 alias C='clear'
-
-## Other shortcuts
-alias shutdown='shutdown -P now'
