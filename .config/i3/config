@@ -24,13 +24,6 @@ font pango:Inconsolata-Regular 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-# Commands to run at startup
-exec_always setres --port HDMI-1 1920 1080
-exec_always setres --port DVI-I-1 1280 1024
-exec_always bash ~/.screenlayout/screen.sh
-exec_always feh --bg-scale /home/whoami/Pictures/wallpaper.jpg
-exec_always setxkbmap de,de
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -190,9 +183,9 @@ bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 50 -terminal termite
 bindsym $mod+p exec i3lock --color "$bg-color"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 4 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 4 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 4 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
