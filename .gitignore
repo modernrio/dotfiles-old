@@ -1,3 +1,4 @@
 *.swp
 .mutt/
 .vim/bundle/
+.config/gtk-3.0/bookmarks
