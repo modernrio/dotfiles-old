@@ -46,8 +46,8 @@ if has('gui_running')
 endif
 
 " Powerline
-let $PYTHONPATH='/usr/lib/python3.5/site-packages/'
-set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
+let $PYTHONPATH='/usr/lib/python3.6/site-packages/'
+set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
 
@@ -103,9 +103,6 @@ au BufRead *.tex set tw=80
 " Limit text width to 100 characters when editing C++ files
 au BufRead *.cpp set tw=100
 au BufRead *.h set tw=100
-
-" Extend runtimepath for ctrlp plugin
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " YCM settings
 let g:ycm_register_as_syntastic_checker = 1
@@ -164,7 +161,9 @@ let g:syntastic_cpp_check_header = 1
 " [Syntastic] VHDL checker options
 let g:syntastic_vhdl_ghdl_args = "--workdir=work"
 
-" ControlP
+" CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|vdb|aux)$',
