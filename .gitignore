@@ -1,4 +1,4 @@
 *.swp
 .mutt/
-.vim/bundle/
+.vim/plugged/
 .config/gtk-3.0/bookmarks

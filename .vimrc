@@ -5,33 +5,35 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
-" Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'triglav/vim-visual-increment'
-Plugin 'vim-scripts/a.vim'
-Plugin 'vimwiki/vimwiki'
-Plugin 'scrooloose/syntastic'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'tpope/vim-fugitive'
+" Plug
+call plug#begin()
 
-call vundle#end()
+Plug 'VundleVim/Vundle.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'Valloric/YouCompleteMe'
+Plug 'triglav/vim-visual-increment'
+Plug 'vim-scripts/a.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'scrooloose/syntastic'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'tpope/vim-fugitive'
 
-" Filetype detection (required for vundle)
+call plug#end()
+
+" Filetype detection
 filetype plugin indent on
 
 " Set leader key
@@ -104,6 +106,12 @@ au BufRead *.tex set tw=80
 au BufRead *.cpp set tw=100
 au BufRead *.h set tw=100
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+" Set custom assembly (.easm) files to filetype asm
+au BufNewFile,BufRead *.easm set filetype=asm
+
 " YCM settings
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_show_diagnostics_ui = 0
@@ -135,9 +143,6 @@ nmap <leader>t :TagbarToggle<CR>
 " Show changes made to the file
 command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
-" NERDTree mappings
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
-
 " Commentmapping for tcomment plugin
 map <leader>c <C-_><C-_>
 
@@ -146,10 +151,14 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+" Shortcut for enabling syntastic
+nnoremap <C-w>E :SyntasticToggleMode<CR> :SyntasticCheck<CR> 
 
 " [Syntastic] Python checker options
 let g:syntastic_python_checkers = ['pylint']
