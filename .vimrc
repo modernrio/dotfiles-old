@@ -13,17 +13,21 @@ endif
 " Plug
 call plug#begin()
 
-Plug 'VundleVim/Vundle.vim'
+" Dependencies
+" (vim-snipmate)
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim' 
+
+" Plugins
+Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'triglav/vim-visual-increment'
 Plug 'vim-scripts/a.vim'
 Plug 'vimwiki/vimwiki'
@@ -48,10 +52,10 @@ if has('gui_running')
 endif
 
 " Powerline
-let $PYTHONPATH='/usr/lib/python3.6/site-packages/'
-set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
+" let $PYTHONPATH='/usr/lib/python3.6/site-packages/'
+" set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
+" set laststatus=2
+" set t_Co=256
 
 " Folding options
 set foldmethod=indent
@@ -61,7 +65,9 @@ set nofoldenable
 set autoread
 
 " Remove delay after pressing <Esc> in insert mode
-set noesckeys
+if !has('nvim')
+	set noesckeys
+endif
 
 " Highlight search results
 set hls is
@@ -171,8 +177,6 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_vhdl_ghdl_args = "--workdir=work"
 
 " CtrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|o|vdb|aux)$',

@@ -3,12 +3,6 @@ alias py='python'
 alias py2='python2'
 alias py3='python3'
 
-## FPGA
-alias fpga-loader='sudo ~/Projects/epu/numato-loader/numato-loader'
-
-## Tmuxinator
-alias epu='tmuxinator start epu'
-
 ## Fun
 alias aquarium='asciiquarium'
 alias starwars='telnet towel.blinkenlights.nl'
@@ -25,7 +19,6 @@ alias cd3='cd ~/.config/i3/'
 alias cdC='cd ~/ctfs'
 alias cD='cd ~/Downloads'
 alias cdD='cd ~/dotfiles'
-alias cdE='cd ~/Projects/epu'
 alias cdM='cd ~/Music/'
 alias cP='cd ~/Projects/'
 alias cdP='cd ~/Pictures'
@@ -47,7 +40,6 @@ alias eA='$EDITOR ~/.aliases'
 alias eB='$EDITOR ~/.bashrc && rB'
 alias ec='crontab -e'
 alias eC='sudo crontab -e'
-alias eE='tmuxinator open epu'
 alias eF='sudo $EDITOR /root/activate-firewall.sh && sudo bash /root/activate-firewall.sh'
 alias eG='$EDITOR ~/.gitconfig'
 alias eI='$EDITOR ~/.xinitrc'
@@ -64,7 +56,8 @@ alias eZ='$EDITOR ~/.zshrc'
 alias pty='socat -d -d pty,raw,echo=0 pty,raw,echo=0'
 alias t='task'
 alias g='git'
-alias vi='vim'
+alias vi='nvim'
+alias vim='nvim'
 
 ## Shell shortcuts
 alias k='exit'
