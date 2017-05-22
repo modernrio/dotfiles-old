@@ -5,6 +5,12 @@
 " Use Vim settings, rather than Vi settings
 set nocompatible
 
+" Source .vimrc file if present in present working directory
+set exrc
+
+" Restrict usage of some commands in non-default .vimrc files
+set secure
+
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
@@ -27,13 +33,19 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-" Plug 'Valloric/YouCompleteMe'
 Plug 'triglav/vim-visual-increment'
 Plug 'vim-scripts/a.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'tpope/vim-fugitive'
+Plug 'Rip-Rip/clang_complete'
+Plug 'ervandew/supertab'
+
+" Neovim only plugins
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 
 call plug#end()
 
@@ -50,12 +62,6 @@ set modeline
 if has('gui_running')
 	set guifont=Inconsolata Regular:h13
 endif
-
-" Powerline
-" let $PYTHONPATH='/usr/lib/python3.6/site-packages/'
-" set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
-" set laststatus=2
-" set t_Co=256
 
 " Folding options
 set foldmethod=indent
@@ -94,7 +100,6 @@ let base16colorspace=256
 
 " Colorscheme
 syntax on
-" set background=dark
 colorscheme base16-chalk
 
 " Tab regulations
@@ -115,66 +120,30 @@ au BufRead *.h set tw=100
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Set custom assembly (.easm) files to filetype asm
-au BufNewFile,BufRead *.easm set filetype=asm
+" Run Neomake on every write
+autocmd! BufWritePost * Neomake
 
-" YCM settings
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_show_diagnostics_ui = 0
+" Recognise .md files as markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-let g:ycm_python_binary_path='python3'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Vimwiki settings
+" vimwiki settings
 let g:vimwiki_list = [
 	\ {
-	\  'path': '~/vimwiki/',
-	\  'path_html': '~/vimwiki_html/',
+	\  'path': '~/wiki/',
+	\  'path_html': '~/wiki/html/',
+	\  'syntax': 'markdown',
+	\  'ext': '.md',
 	\ },
 	\ ]
 
-let g:tagbar_type_vimwiki = {
-	\   'ctagstype':'vimwiki'
-	\ , 'kinds':['h:header']
-	\ , 'sro':'&&&'
-	\ , 'kind2scope':{'h':'header'}
-	\ , 'sort':0
-	\ , 'ctagsbin':'~/.vim/bundle/vimwiki/vimwiki-utils/vwtags.py'
-	\ , 'ctagsargs': 'default'
-	\ }
-
-" Tagbar mappings
-nmap <leader>t :TagbarToggle<CR>
+" vimwiki with markdown support
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 " Show changes made to the file
 command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 
 " Commentmapping for tcomment plugin
 map <leader>c <C-_><C-_>
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" Shortcut for enabling syntastic
-nnoremap <C-w>E :SyntasticToggleMode<CR> :SyntasticCheck<CR> 
-
-" [Syntastic] Python checker options
-let g:syntastic_python_checkers = ['pylint']
-
-" [Syntastic] C++ checker options
-let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_check_header = 1
-
-" [Syntastic] VHDL checker options
-let g:syntastic_vhdl_ghdl_args = "--workdir=work"
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
@@ -183,6 +152,18 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 let g:ctrlp_show_hidden = 1
+
+" clang_complete
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_default_keymappings = -1
+let g:clang_complete_copen = 1
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" Supertab option for context aware completion
+let g:SuperTabDefaultCompletionType = "context"
 
 " Remap default controls for following tags
 nnoremap t <C-]>
