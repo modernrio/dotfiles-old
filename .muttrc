@@ -237,3 +237,8 @@ color index			yellow			default '~O'		# Old messages
 color index     	yellow 			default '~N'		# New messages
 color index     	brightred       default '~F'		# Flagged messages are important
 color index     	blue			default '~D'		# Deleted mails
+
+color index_number	blue			default				# Color for column 'number'
+color index_author	red				default '.*'		# Color for column 'author'
+color index_size	green			default				# Color for column 'size'
+color index_subject cyan 			default '.s'		# Color for column 'subject'
