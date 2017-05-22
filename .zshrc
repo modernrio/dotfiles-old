@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------#
 #                              Default Variables                               #
 #------------------------------------------------------------------------------#
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="less"
 export BROWSER="firefox"
 export MAIL="mutt"
@@ -13,6 +13,7 @@ export TERMINAL="termite"
 export PULSE_LATENCY_MSEC=60
 export TERM="xterm-256color"
 export ETH_IF="eno1"
+export VDPAU_DRIVER=vdpau
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/

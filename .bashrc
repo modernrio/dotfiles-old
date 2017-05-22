@@ -21,7 +21,7 @@ export PYTHONDONTWRITEBYTECODE="true"
 #                              Default Variables                               #
 #------------------------------------------------------------------------------#
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="less"
 export BROWSER="firefox"
 export MAIL="mutt"
