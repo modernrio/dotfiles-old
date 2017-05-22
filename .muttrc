@@ -208,27 +208,32 @@ set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 set pgp_decryption_okay="^\\[GNUPG:\\] DECRYPTION_OKAY"
 
 ## Color theme
-color hdrdefault default default
-color attachment yellow default
+# Basic colors
+#color	status      J_black         J_status        
+color normal        white			default
+color error         red             default
+color tilde         black           default
+color message       cyan            default				# Informational messages
+color markers       red             white				# The markers indicate a wrapped line when showing messages
+color attachment    white           default
+color search        brightmagenta   default				# Search matches found with search within the internal pager
+color error			red             default				# Error messages
+color status        black			cyan				# Status lines in the folder index sed for the mini-help line
+color indicator     brightwhite     blue				# Indicator for the "current message"
+color tree          red				default				# The "tree" display of threads within the folder index
+color hdrdefault	default			default
+color attachment	yellow			default
 
-color header magenta default "From: "
-color header magenta default "Subject: "
-color header magenta default "Date: "
+color header		magenta			default "From: "
+color header 		magenta 		default "Subject: "
+color header 		magenta 		default "Date: "
 
-color quoted	green	default
-color quoted1	cyan	default
-color quoted2	green	default
-color quoted3	cyan	default
+color quoted		green			default
+color quoted1		cyan			default
+color quoted2		green			default
+color quoted3		cyan			default
 
-color error     red             default         # Error messages
-color message   white           default         # Informational messages
-color indicator brightwhite		blue			# Indicator for the "current message"
-color status    black			cyan            # Status lines in the folder index sed for the mini-help line
-color tree      red				default         # the "tree" display of threads within the folder index
-color search    white			blue            # Search matches found with search within the internal pager
-color markers   red				default         # The markers indicate a wrapped line hen showing messages
-
-color index     yellow default  '~O'
-color index     yellow default  '~N'
-color index     brightred       default '~F'    # Flagged Messages are important!
-color index     blue default    '~D'            # Deleted Mails - use dark color as these are already "dealt with"
+color index			yellow			default '~O'		# Old messages
+color index     	yellow 			default '~N'		# New messages
+color index     	brightred       default '~F'		# Flagged messages are important
+color index     	blue			default '~D'		# Deleted mails
