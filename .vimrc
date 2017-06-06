@@ -39,13 +39,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'tpope/vim-fugitive'
-Plug 'Rip-Rip/clang_complete'
 Plug 'ervandew/supertab'
-
-" Neovim only plugins
-if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
+Plug 'justmao945/vim-clang'
 
 call plug#end()
 
@@ -120,7 +115,7 @@ au BufRead *.h set tw=100
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Run Neomake on every write
+" Run neomake on every write
 autocmd! BufWritePost * Neomake
 
 " Recognise .md files as markdown
@@ -145,6 +140,9 @@ command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd
 " Commentmapping for tcomment plugin
 map <leader>c <C-_><C-_>
 
+" neomake settings
+let g:neomake_cpp_enabled_makers=['gcc'] " gcc will be translated to g++ by neomake
+
 " CtrlP
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -153,14 +151,11 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_show_hidden = 1
 
-" clang_complete
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_default_keymappings = -1
-let g:clang_complete_copen = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
+" vim-clang
+let g:clang_auto = 1
+let g:clang_cpp_options = '-std=c++ -stdlib=libc++'
+let g:clang_diagsopt = 'topleft' " split SCREEN horizontally, with new split on the top
+let g:clang_vim_exec = 'nvim'
 
 " Supertab option for context aware completion
 let g:SuperTabDefaultCompletionType = "context"
