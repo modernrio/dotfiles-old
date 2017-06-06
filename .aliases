@@ -6,6 +6,7 @@ alias py3='python3'
 ## Fun
 alias aquarium='asciiquarium'
 alias starwars='telnet towel.blinkenlights.nl'
+alias mapscii='telnet mapscii.me'
 
 ## Directories
 alias ls='ls --color=auto'
