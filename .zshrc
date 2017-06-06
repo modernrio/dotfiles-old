@@ -12,6 +12,7 @@ export DOCVIEWER="zathura"
 export TERMINAL="termite"
 export PULSE_LATENCY_MSEC=60
 export TERM="xterm-256color"
+export COLORTERM="gnome-terminal"
 export ETH_IF="eno1"
 export VDPAU_DRIVER=vdpau
 
