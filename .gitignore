@@ -1,5 +1,7 @@
 *.swp
+*.old
 .mutt/
 .vim/plugged/
 .config/gtk-3.0/bookmarks
 .vim/.netrwhist
+.vim/autoload/plug.vim

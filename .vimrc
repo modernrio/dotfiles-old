@@ -11,6 +11,18 @@ set exrc
 " Restrict usage of some commands in non-default .vimrc files
 set secure
 
+" Manage install of vim-markdown-composer
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
+
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
@@ -39,8 +51,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'tpope/vim-fugitive'
-Plug 'ervandew/supertab'
-Plug 'justmao945/vim-clang'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --all' }
+Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer')}
 
 call plug#end()
 
@@ -140,8 +152,18 @@ command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd
 " Commentmapping for tcomment plugin
 map <leader>c <C-_><C-_>
 
+" YCM settings
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_python_binary_path='python3'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 " neomake settings
 let g:neomake_cpp_enabled_makers=['gcc'] " gcc will be translated to g++ by neomake
+
+" vim-markdown-composer settings
+let g:markdown_composer_open_browser = 1
+let g:markdown_composer_browser = 'firefox'
+map <leader>m :ComposerOpen<CR>
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
@@ -150,15 +172,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 let g:ctrlp_show_hidden = 1
-
-" vim-clang
-let g:clang_auto = 1
-let g:clang_cpp_options = '-std=c++ -stdlib=libc++'
-let g:clang_diagsopt = 'topleft' " split SCREEN horizontally, with new split on the top
-let g:clang_vim_exec = 'nvim'
-
-" Supertab option for context aware completion
-let g:SuperTabDefaultCompletionType = "context"
 
 " Remap default controls for following tags
 nnoremap t <C-]>
