@@ -37,9 +37,9 @@ Plug 'triglav/vim-visual-increment'
 Plug 'vim-scripts/a.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --all' }
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -164,6 +164,17 @@ nmap <Leader>pp :call CompileMD2PDF()<CR>
 nmap <Leader>pv :call ViewMD2PDF()<CR>
 " Automatically compile markdown files on write
 autocmd BufWritePost *.md :call CompileMD2PDF()
+
+" vimtex settings
+if !exists('g:ycm_semantic_triggers')
+	let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
+let g:vimtex_view_method = 'zathura'
+
+nmap <Leader>ll :VimtexCompile<CR>
+nmap <Leader>lv :VimtexView<CR>
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
