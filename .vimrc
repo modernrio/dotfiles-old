@@ -11,18 +11,6 @@ set exrc
 " Restrict usage of some commands in non-default .vimrc files
 set secure
 
-" Manage install of vim-markdown-composer
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
-
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
@@ -52,7 +40,6 @@ Plug 'neomake/neomake'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --all' }
-Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer')}
 
 call plug#end()
 
@@ -160,10 +147,23 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " neomake settings
 let g:neomake_cpp_enabled_makers=['gcc'] " gcc will be translated to g++ by neomake
 
-" vim-markdown-composer settings
-let g:markdown_composer_open_browser = 1
-let g:markdown_composer_browser = 'firefox'
-map <leader>m :ComposerOpen<CR>
+" pandoc , markdown
+command! -nargs=* RunSilent
+      \ | execute ':silent !'.'<args>'
+      \ | execute ':redraw!'
+" Define functions for compiling (pc) and displaying (pp)
+function! CompileMD2PDF()
+	:execute 'silent !pandoc --from markdown_github -o /tmp/vim-pandoc-out.pdf %'
+endfunction
+
+function! DisplayMD2PDF()
+	:execute 'silent !zathura /tmp/vim-pandoc-out.pdf &'
+endfunction
+
+nmap <Leader>pc :call CompileMD2PDF()<CR>
+nmap <Leader>pp :call DisplayMD2PDF()<CR>
+" Automatically compile markdown files on write
+autocmd BufWritePost *.md :call CompileMD2PDF()
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
