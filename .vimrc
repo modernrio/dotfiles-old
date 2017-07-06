@@ -156,12 +156,12 @@ function! CompileMD2PDF()
 	:execute 'silent !pandoc --from markdown_github -o /tmp/vim-pandoc-out.pdf %'
 endfunction
 
-function! DisplayMD2PDF()
+function! ViewMD2PDF()
 	:execute 'silent !zathura /tmp/vim-pandoc-out.pdf &'
 endfunction
 
-nmap <Leader>pc :call CompileMD2PDF()<CR>
-nmap <Leader>pp :call DisplayMD2PDF()<CR>
+nmap <Leader>pp :call CompileMD2PDF()<CR>
+nmap <Leader>pv :call ViewMD2PDF()<CR>
 " Automatically compile markdown files on write
 autocmd BufWritePost *.md :call CompileMD2PDF()
 
