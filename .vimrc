@@ -54,7 +54,7 @@ set modeline
 
 " Set font for gvim
 if has('gui_running')
-	set guifont=Inconsolata Regular:h13
+	set guifont="Inconsolata Regular":h13
 endif
 
 " Folding options
