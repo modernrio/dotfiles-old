@@ -145,6 +145,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " eclim settings
 let g:EclimCompletionMethod = 'omnifunc'
+nmap <Leader>j :JavaCorrect<CR>
 
 " neomake settings
 let g:neomake_cpp_enabled_makers=['gcc'] " gcc will be translated to g++ by neomake
