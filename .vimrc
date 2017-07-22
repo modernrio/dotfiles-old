@@ -143,6 +143,9 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_python_binary_path='python3'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" eclim settings
+let g:EclimCompletionMethod = 'omnifunc'
+
 " neomake settings
 let g:neomake_cpp_enabled_makers=['gcc'] " gcc will be translated to g++ by neomake
 
