@@ -154,7 +154,7 @@ let g:neomake_cpp_enabled_makers=['gcc'] " gcc will be translated to g++ by neom
 command! -nargs=* RunSilent
       \ | execute ':silent !'.'<args>'
       \ | execute ':redraw!'
-" Define functions for compiling (pc) and displaying (pp)
+" Define functions for compiling (pp) and displaying (pv)
 function! CompileMD2PDF()
 	:execute 'silent !pandoc --from markdown_github -o /tmp/vim-pandoc-out.pdf %'
 endfunction
@@ -166,6 +166,7 @@ endfunction
 nmap <Leader>pp :call CompileMD2PDF()<CR>
 nmap <Leader>pv :call ViewMD2PDF()<CR>
 " Automatically compile markdown files on write
+" TODO: Detect filetype markdown instead of relying on file ending with .md
 autocmd BufWritePost *.md :call CompileMD2PDF()
 
 " vimtex settings
